@@ -2,21 +2,22 @@ from aiogram import types, Dispatcher
 import config
 
 
-async def cmd_start(message: types.Message):
+async def main_handler(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
     btn = types.InlineKeyboardButton(
         text="App",
-        web_app=types.WebAppInfo(url=f"{config.APP_URL}/web-start")
+        web_app=types.WebAppInfo(url=f"https://f523-185-165-160-198.ngrok-free.app/#/")
     )
     keyboard.add(btn)
+
     await message.answer(
-        "Hello, World!",
+        "<b>Hi 👋</b>\n\n"
+        "To order tickets click the button below.",
         reply_markup=keyboard,
     )
 
 
 def register_handler(dp: Dispatcher):
     dp.register_message_handler(
-        cmd_start,
-        commands="start"
+        main_handler,
     )

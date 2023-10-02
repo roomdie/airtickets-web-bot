@@ -19,7 +19,7 @@ services:
       - /etc/letsencrypt/live/your_domain/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
       - /etc/letsencrypt/live/your_domain/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
   web:
-    build: services/web
+    build: services/web-backend
     command: gunicorn --bind 0.0.0.0:5000 main:app
     env_file: .env
     volumes:
