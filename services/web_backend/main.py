@@ -5,10 +5,19 @@ from aiogram import Bot, types
 from services.web_backend.generator import FlightGenerator
 from sqlalchemy import select
 
-from services import models
+from services import models, database
 from services.web_backend import validator
 
 app = Flask(__name__)
+db = database.implement.PostgreSQL(
+    database_name=config.PSQL_DB_NAME,
+    username=config.PSQL_USERNAME,
+    password=config.PSQL_PASSWORD,
+    hostname=config.PSQL_HOSTNAME,
+    port=5432
+)
+
+session = database.manager.create_session(db)
 
 
 @app.post("/api/createInvoiceLink")
@@ -52,7 +61,7 @@ async def check_init_data():
 @app.post("/api/getPurchasedTickets")
 async def get_purchased_tickets():
     user_id = request.json["user_id"]
-    with config.session() as open_session:
+    with session() as open_session:
         response = open_session.execute(select(
             models.sql.PurchasedTicket).filter_by(user_id=user_id))
         purchased_tickets: typing.List[models.sql.PurchasedTicket] = response.scalars().all()
@@ -87,7 +96,7 @@ async def handle_searched_flights():
     )
     flights: typing.List[dict] = generator.generate_flights()
 
-    with config.session() as open_session:
+    with session() as open_session:
         for flight in flights:
             response = open_session.execute(select(models.sql.Flight))
             flight_model: models.sql.Flight = response.scalars().first()

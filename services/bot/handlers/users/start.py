@@ -1,7 +1,6 @@
-import asyncio
-from sqlalchemy import select
 from aiogram import types, Dispatcher
 from services.bot import config
+
 
 async def main_handler(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
