@@ -12,16 +12,16 @@ services:
     command: gunicorn --bind 0.0.0.0:5000 main:app
     env_file: .env
     volumes:
-      - ./services/web_backend:/home/app
+      - ./services/web_backend:/services/web_backend
     expose:
       - 5000
   web-frontend:
     build: ./services/web-frontend
     volumes:
-      - ./services/web-frontend:/home/app
+      - ./services/web-frontend:/services/web-frontend
   bot:
     build: ./services/bot
     command: python3 main.py
     env_file: .env
     volumes:
-      - ./services/bot:/home/bot
+      - ./services/bot:/services/bot

@@ -1,9 +1,9 @@
 import logging
 import asyncio
+import config
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram import types
-import config
 import handlers
 import admin_notice
 from services import database
