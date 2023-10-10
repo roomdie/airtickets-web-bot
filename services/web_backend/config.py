@@ -1,5 +1,4 @@
-from aiogram import Bot, Dispatcher
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
+import os
 from environs import Env
 from services import database
 
@@ -7,6 +6,9 @@ env = Env()
 env.read_env()
 
 BOT_TOKEN = env.str("BOT_TOKEN")
+
+DIRNAME = os.path.dirname(__file__)
+os.chdir(f"{DIRNAME}//..")
 
 PSQL_HOSTNAME = env.str("PSQL_HOSTNAME")
 PSQL_PORT = env.str("PSQL_PORT")

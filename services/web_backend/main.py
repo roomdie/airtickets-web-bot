@@ -1,10 +1,10 @@
-
 import typing
+import config
 from flask import Flask, jsonify, request
 from aiogram import Bot, types
 from services.web_backend.generator import FlightGenerator
 from sqlalchemy import select
-import config
+
 from services import models
 from services.web_backend import validator
 

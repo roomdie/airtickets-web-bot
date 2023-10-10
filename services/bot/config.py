@@ -10,7 +10,7 @@ os.chdir(f"{DIRNAME}//..")
 BOT_TOKEN = env.str("BOT_TOKEN")
 BOT_ADMINS = env.list("BOT_ADMINS")
 
-APP_URL= env.str("APP_URL")
+APP_URL=env.str("APP_URL")
 
 PSQL_HOSTNAME = env.str("PSQL_HOSTNAME")
 PSQL_PORT = env.str("PSQL_PORT")
