@@ -8,11 +8,11 @@ services:
     depends_on:
       - web-backend
   web-backend:
-    build: ./services/web-backend
+    build: ./services/web_backend
     command: gunicorn --bind 0.0.0.0:5000 main:app
     env_file: .env
     volumes:
-      - ./services/web-backend:/home/app
+      - ./services/web_backend:/home/app
     expose:
       - 5000
   web-frontend:
