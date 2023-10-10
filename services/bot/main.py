@@ -4,7 +4,7 @@ import config
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram import types
-from . import handlers
+import handlers
 import admin_notice
 from services import database
 
