@@ -1,6 +1,8 @@
-FROM nginx
+FROM nginx:latest
 
-RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY security.conf /etc/nginx/security.conf
 
-COPY nginx.conf /etc/nginx/
-COPY security.conf /etc/nginx/
+COPY ssl_certs/ /etc/nginx/ssl_certs/
+
+EXPOSE 443

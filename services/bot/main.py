@@ -4,11 +4,15 @@ from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram import types
 
-import handler
-import config
+from services.bot import handlers
+from services.bot import config
 import admin_notice
+from services import database
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
+    level=logging.INFO,
+)
 
 
 async def main():
@@ -16,11 +20,26 @@ async def main():
     storage = MemoryStorage()
     dp = Dispatcher(bot, storage=storage)
 
-    handler.register_handler(dp)
+    db = database.implement.AsyncPostgreSQL(
+        database_name=config.PSQL_DB_NAME,
+        username=config.PSQL_USERNAME,
+        password=config.PSQL_PASSWORD,
+        hostname=config.PSQL_HOSTNAME,
+        port=5432
+    )
+    _bot = await bot.get_me()
+    logging.info(f"Bot: @{_bot.username}")
+    session = await database.manager.create_async_session(db)
+    bot["session"] = session
+    #
+    # middlewares.setup(dp)
+    # filters.setup(dp)
+    handlers.setup(dp)
+
     await admin_notice.send(dp)
     try:
         await dp.skip_updates()     # Don't use this in production
-        await dp.start_polling()
+        await dp.start_polling(allowed_updates=types.AllowedUpdates.all())
     finally:
         await dp.storage.close()
         await dp.storage.wait_closed()

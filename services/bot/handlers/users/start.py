@@ -1,12 +1,13 @@
+import asyncio
+from sqlalchemy import select
 from aiogram import types, Dispatcher
-import config
-
+from services.bot import config
 
 async def main_handler(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
     btn = types.InlineKeyboardButton(
         text="App",
-        web_app=types.WebAppInfo(url=f"https://f523-185-165-160-198.ngrok-free.app/#/")
+        web_app=types.WebAppInfo(url=f"{config.APP_URL}/#/")
     )
     keyboard.add(btn)
 
@@ -17,7 +18,12 @@ async def main_handler(message: types.Message):
     )
 
 
-def register_handler(dp: Dispatcher):
+def setup(dp: Dispatcher):
     dp.register_message_handler(
         main_handler,
+        commands=["start"],
     )
+
+
+
+

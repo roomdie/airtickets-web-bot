@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App'
 import router from "@/router";
-import store from "./store"
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -12,11 +11,10 @@ import '@mdi/font/css/materialdesignicons.css'
 // import { VDatePicker } from 'vuetify/labs/VDatePicker'
 // import {Sortable, Swap} from "sortablejs/modular/sortable.core.esm";
 // Sortable.mount(new Swap());
+import '@vuepic/vue-datepicker/dist/main.css';
+
 
 const vuetify = createVuetify({
-    icons: {
-    defaultSet: 'mdi', // This is already the default value - only for display purposes
-  },
   components,
   directives,
 })
@@ -25,5 +23,6 @@ const vuetify = createVuetify({
 createApp(App)
     .use(router)
     .use(vuetify)
-    .use(store)
     .mount('#app');
+
+// app.component('VueDatePicker', VueDatePicker)

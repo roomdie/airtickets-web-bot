@@ -1,28 +1,40 @@
 import { createStore } from 'vuex';
 const store = createStore({
   state: {
-    GamePlayersCount: 2,
-    UserId: null,
-    UserFullName: null,
-    fieldValues: []
+    flightSearchFilter: {
+      from_country: null,
+      to_country: null,
+      adult_passengers_count: 1,
+      teenager_passengers_count: 0,
+      child_passengers_count: 0,
+      is_business_class: false,
+      departure_date: null,
+      back_date: null,
+      no_back_ticket: false
+    },
+    firstGroupPassengersCount: 1,
+    secondGroupPassengersCount: 0,
+    thirdGroupPassengersCount: 0,
   },
   mutations: {
-    setUserId(state, data) {
-      state.UserId = data;
+    setFirstGroupPassengersCount(state, data) {
+      state.firstGroupPassengersCount = data;
     },
-    setUserFullName(state, data) {
-      state.UserFullName = data;
+    setSecondGroupPassengersCount(state, data) {
+      state.secondGroupPassengersCount = data;
     },
-    setGamePlayersCount(state, data) {
-      state.GamePlayersCount = data;
+    setThirdGroupPassengersCount(state, data) {
+      state.thirdGroupPassengersCount = data;
     },
-    setFieldValues(state, data) {
-      state.fieldValues = data;
+
+    setFlightSearchFilter(state, data) {
+      state.flightSearchFilter = data;
     },
+
   },
   actions: {
-    updateUserId({commit}, data) {
-      commit('setUserId', data);
+    updateFirstGroupPassengersCount({commit}, data) {
+      commit('setFirstGroupPassengersCount', data);
     },
     updateUserFullName({commit}, data) {
       commit('setUserFullName', data);
@@ -32,13 +44,13 @@ const store = createStore({
     },
     updateFieldValues({commit}, data) {
       commit('setFieldValues', data);
+    },
+    flightSearchFilter({commit}, data) {
+      commit('setFlightSearchFilter', data);
     }
   },
   getters: {
-    getUserId: state => state.UserId,
-    getUserFullName: state => state.UserFullName,
-    getGamePlayersCount: state => state.GamePlayersCount,
-    getFieldValues: state => state.fieldValues
+    getFlightSearchFilter: state => state.flightSearchFilter,
   }
 });
 

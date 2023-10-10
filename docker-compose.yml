@@ -18,7 +18,15 @@ services:
       - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
       - /etc/letsencrypt/live/your_domain/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
       - /etc/letsencrypt/live/your_domain/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
-  web:
+  web-backend:
+    build: services/web-backend
+    command: gunicorn --bind 0.0.0.0:5000 main:app
+    env_file: .env
+    volumes:
+      - ./services/web/:/home/app/
+    expose:
+      - 5000
+  web-frontend:
     build: services/web-backend
     command: gunicorn --bind 0.0.0.0:5000 main:app
     env_file: .env
