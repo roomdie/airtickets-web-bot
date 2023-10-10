@@ -23,6 +23,8 @@ services:
       - ./services/bot:/home/services/bot
       - ./services/models:/home/services/models
       - ./services/database:/home/services/database
+    expose:
+      - 8080
   bot:
     build: ./services/bot
     command: python3 main.py
