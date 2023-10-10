@@ -2,11 +2,11 @@ import typing
 import config
 from flask import Flask, jsonify, request
 from aiogram import Bot, types
-from services.web_backend.generator import FlightGenerator
+from generator import FlightGenerator
 from sqlalchemy import select
 
-from services import models, database
-from services.web_backend import validator
+import models, database
+import validator
 
 app = Flask(__name__)
 db = database.implement.PostgreSQL(
