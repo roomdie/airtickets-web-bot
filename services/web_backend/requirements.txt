@@ -1,6 +1,6 @@
 Flask==2.2.2
 gunicorn==20.1.0
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
 asgiref==3.6.0
 aiogram==2.25.1
 environs==9.5.0
