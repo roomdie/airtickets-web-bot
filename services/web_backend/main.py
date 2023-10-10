@@ -1,3 +1,4 @@
+
 import typing
 from flask import Flask, jsonify, request
 from aiogram import Bot, types
@@ -103,3 +104,4 @@ async def handle_searched_flights():
             open_session.commit()
 
     return jsonify(flights)
+
