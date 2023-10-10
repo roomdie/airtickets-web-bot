@@ -5,7 +5,7 @@ from aiogram import Bot, types
 from generator import FlightGenerator
 from sqlalchemy import select
 
-from services import models, database
+import models, database
 import validator
 
 app = Flask(__name__)
