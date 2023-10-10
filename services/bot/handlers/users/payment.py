@@ -1,5 +1,4 @@
 from aiogram import types, Dispatcher
-from services import models
 from sqlalchemy import select
 from enum import Enum
 from sqlalchemy import Column, Integer, String, DateTime, BigInteger, JSON
@@ -49,11 +48,11 @@ async def successful_payment_handler(message: types.Message):
     print(flight_code)
 
     async with session() as open_session:
-        response: models.sql.Flight = await open_session.execute(select(
-            models.sql.Flight).filter_by(code=flight_code))
+        response: Flight = await open_session.execute(select(
+            Flight).filter_by(code=flight_code))
         flight = response.scalars().first()
 
-        new_purchased_ticket = models.sql.PurchasedTicket(
+        new_purchased_ticket = PurchasedTicket(
             user_id=message.from_user.id,
             passenger_name=passenger_name,
             details=flight.details,
