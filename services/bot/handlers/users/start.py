@@ -1,12 +1,11 @@
 from aiogram import types, Dispatcher
-from services.bot import config
 
 
 async def main_handler(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
     btn = types.InlineKeyboardButton(
         text="App",
-        web_app=types.WebAppInfo(url=f"{config.APP_URL}/#/")
+        web_app=types.WebAppInfo(url=f"https://airticketsbot.ru/")
     )
     keyboard.add(btn)
 
