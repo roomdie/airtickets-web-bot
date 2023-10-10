@@ -28,4 +28,4 @@ services:
     command: python3 main.py
     env_file: .env
     volumes:
-      - ./services/:/services/
+      - ./services/:/home/services/
