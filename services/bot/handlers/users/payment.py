@@ -1,5 +1,5 @@
 from aiogram import types, Dispatcher
-from bot import models
+from services import models
 from sqlalchemy import select
 
 
