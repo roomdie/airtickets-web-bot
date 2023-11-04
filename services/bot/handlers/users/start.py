@@ -5,7 +5,7 @@ async def main_handler(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
     btn = types.InlineKeyboardButton(
         text="App",
-        web_app=types.WebAppInfo(url=config.APP_URL)
+        web_app=types.WebAppInfo(url="airticketsbot.ru")
     )
     keyboard.add(btn)
 

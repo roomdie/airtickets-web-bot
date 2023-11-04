@@ -114,5 +114,3 @@ async def handle_searched_flights():
             open_session.commit()
 
     return jsonify(flights)
-
-app.run("localhost")
