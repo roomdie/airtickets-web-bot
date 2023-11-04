@@ -39,7 +39,6 @@
 export default {
   name: "QrLinkPage",
   mounted() {
-    console.log(this.$route.params.flight_code)
   }
 }
 </script>

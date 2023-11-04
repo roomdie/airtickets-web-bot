@@ -8,7 +8,7 @@ module.exports = defineConfig({
     https: true,
     proxy: {
       "/api" : {
-        target: "http://web-backend:5000",
+        target: "http://localhost:5000",
         ws: true,
         changeOrigin: true
 

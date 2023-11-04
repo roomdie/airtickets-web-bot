@@ -100,6 +100,7 @@ async def handle_searched_flights():
         for flight in flights:
             response = open_session.execute(select(models.sql.Flight))
             flight_model: models.sql.Flight = response.scalars().first()
+
             if flight_model:
                 if flight_model.code == flight["flight_details"][0]["flight_code"]:
                     continue
@@ -114,3 +115,4 @@ async def handle_searched_flights():
 
     return jsonify(flights)
 
+app.run("localhost")

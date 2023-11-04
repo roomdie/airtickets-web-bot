@@ -6,7 +6,8 @@ services:
     ports:
       - "443:443"
     depends_on:
-      - web-backend
+      - web-frontend
+
   web-backend:
     build: ./services/web_backend
     command: gunicorn --bind 0.0.0.0:5000 main:app
@@ -15,19 +16,22 @@ services:
       - ./services/bot:/home/services/bot
       - ./services/models:/home/services/models
       - ./services/database:/home/services/database
-    expose:
-      - 5000
+    ports:
+      - "5000:5000"
   web-frontend:
     build: ./services/web-frontend
     volumes:
-      - ./services/bot:/home/services/bot
-      - ./services/models:/home/services/models
-      - ./services/database:/home/services/database
+      - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
+      - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
+      - ./services/web-frontend/:/app
     ports:
-      - "8080:8080"
+      - "8080:443"
+
   bot:
     build: ./services/bot
     command: python3 main.py
     env_file: .env
     volumes:
       - ./services/:/home/services/
+

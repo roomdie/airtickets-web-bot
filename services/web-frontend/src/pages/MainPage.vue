@@ -1,5 +1,6 @@
 <template>
   <v-container fill-height>
+
     <v-row>
       <v-col cols="12">
         <br>
@@ -78,6 +79,9 @@
       <br>
       <v-card-subtitle>
         GitHub: <a target=”_blank” href="https://github.com/roomdie/">https://github.com/roomdie/</a>
+      </v-card-subtitle>
+      <v-card-subtitle class="mt-2">
+        Telegram: <a target=”_blank” href="https://t.me/mainbatya/">@mainbatya</a>
       </v-card-subtitle>
     </v-card>
   </v-container>

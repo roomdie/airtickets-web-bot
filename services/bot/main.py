@@ -30,7 +30,7 @@ async def main():
     logging.info(f"Bot: @{_bot.username}")
     session = await database.manager.create_async_session(db)
     bot["session"] = session
-    #
+
     # middlewares.setup(dp)
     # filters.setup(dp)
     handlers.setup(dp)
