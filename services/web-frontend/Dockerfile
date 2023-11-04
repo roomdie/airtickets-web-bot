@@ -1,4 +1,4 @@
-FROM node:21-alpine as build-stage
+FROM node:20-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -10,4 +10,4 @@ RUN mkdir /app
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/security.conf /etc/nginx/security.conf
-#COPY nginx/ssl_certs/ /etc/nginx/ssl_certs/
+COPY nginx/ssl_certs/ /etc/nginx/ssl_certs/
