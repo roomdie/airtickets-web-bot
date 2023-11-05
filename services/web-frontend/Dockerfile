@@ -1,10 +1,9 @@
-FROM node:19-alpine as build-stage
+FROM node:17-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY ./ .
 RUN npm run build
-#CMD ["npm", "run", "serve"]
 
 FROM nginx as production-stage
 RUN mkdir /app
