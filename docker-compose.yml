@@ -3,6 +3,10 @@ version: '3.8'
 services:
   nginx:
     build: ./services/web-frontend/nginx
+    volumes:
+      - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
+      - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
+      - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
     ports:
       - "443:443"
     depends_on:
