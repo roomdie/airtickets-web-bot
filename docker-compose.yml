@@ -24,7 +24,7 @@ services:
       - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
       - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
       - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
-      - ./services/web-frontend/:/
+      - ./services/web-frontend/:/app
     ports:
       - "8080:8080"
 
