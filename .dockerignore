@@ -7,8 +7,6 @@
 Makefile
 README.md
 
-**/node_modules
-**/dist
 
 # Cache
 *.py[cod]
