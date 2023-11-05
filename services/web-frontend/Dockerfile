@@ -5,8 +5,9 @@ RUN npm install
 COPY ./ .
 RUN npm run build
 
-FROM nginx as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+FROM nginx as production-
+RUN mkdir /app
+COPY --from=build-stage /app/dist /app
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/security.conf /etc/nginx/security.conf
 COPY nginx/ssl_certs/ /etc/nginx/ssl_certs/
