@@ -26,7 +26,7 @@ services:
       - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
       - ./services/web-frontend/:/app
     ports:
-      - "443:443"
+      - "8080:8080"
 
   bot:
     build: ./services/bot
