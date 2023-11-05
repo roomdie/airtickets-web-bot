@@ -46,9 +46,5 @@ p {
   color: var(--tg-theme-hint-color);
 }
 
-.v-btn {
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-}
 
 </style>
