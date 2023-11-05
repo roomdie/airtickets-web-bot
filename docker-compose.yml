@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    build: ./services/nginx
+    build: ./services/web-frontend/nginx
     ports:
       - "443:443"
     depends_on:
