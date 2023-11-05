@@ -20,6 +20,7 @@ services:
       - "5000:5000"
   web-frontend:
     build: ./services/web-frontend
+    command: npm run serve
     volumes:
       - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
       - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
