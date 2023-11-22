@@ -35,6 +35,5 @@ services:
     build: ./services/bot
     command: python3 main.py
     env_file: .env
-    volumes:
-      - ./services/:/home/services/
+
 
