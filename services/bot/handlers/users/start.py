@@ -1,4 +1,5 @@
 from aiogram import types, Dispatcher
+from services.bot import config
 
 
 async def main_handler(message: types.Message):
