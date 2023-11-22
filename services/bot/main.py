@@ -4,9 +4,9 @@ import config
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram import types
-import handlers
+from services.bot import handlers
 import admin_notice
-import database
+from services.bot import database
 
 logging.basicConfig(
     format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
