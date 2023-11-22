@@ -6,7 +6,7 @@ env.read_env()
 
 DIRNAME = os.path.dirname(__file__)
 os.chdir(f"{DIRNAME}//..")
-
+print(DIRNAME)
 BOT_TOKEN = env.str("BOT_TOKEN")
 BOT_ADMINS = env.list("BOT_ADMINS")
 
