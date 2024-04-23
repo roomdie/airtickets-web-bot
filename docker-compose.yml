@@ -1,27 +1,14 @@
-version: '3.8'
-
 services:
-#  nginx:
-#    build: ./services/web-frontend/nginx
-#    volumes:
-#      - /etc/ssl/certs/dhparam.pem:/etc/nginx/ssl_certs/dhparam.pem:ro
-#      - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
-#      - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
-#    ports:
-#      - "443:443"
-#    depends_on:
-#      - web-frontend
-
   web-backend:
     build: ./services/web_backend
-    command: gunicorn --bind 0.0.0.0:5000 main:app
+    command: gunicorn --bind 0.0.0.0:5002 main:app
     env_file: .env
     volumes:
       - ./services/bot:/home/services/bot
       - ./services/models:/home/services/models
       - ./services/database:/home/services/database
     ports:
-      - "5000:5000"
+      - "5002:5002"
   web-frontend:
     build: ./services/web-frontend
     volumes:
@@ -29,7 +16,7 @@ services:
       - /etc/letsencrypt/live/airticketsbot.ru/fullchain.pem:/etc/nginx/ssl_certs/fullchain.pem:ro
       - /etc/letsencrypt/live/airticketsbot.ru/privkey.pem:/etc/nginx/ssl_certs/privkey.pem:ro
     ports:
-      - "443:443"
+      - "444:444"
 
   bot:
     build: ./services/bot
